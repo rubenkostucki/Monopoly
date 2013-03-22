@@ -1,4 +1,5 @@
 require './tile'
+require './player'
 
 class Land < Tile
 
@@ -11,17 +12,19 @@ class Land < Tile
 	end
 
 	def available?
-
-
+		@available 
 	end
 
 	def sell_to_player
-	
+		@value_for_purchase
 	end
 
 	def calculate_rent
+		@rent_price
+	end
 
+	def to_s
+		"#{name}, #{value_for_purchase}, #{rent_price}"
 	end
 	
-
 end
