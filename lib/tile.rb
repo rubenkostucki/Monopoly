@@ -4,7 +4,5 @@ class Tile
 	@name = name
 	end
 
-  def owner
-
 end
 

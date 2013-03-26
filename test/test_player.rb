@@ -1,7 +1,6 @@
 require 'minitest/autorun'
 require './lib/land'
 require './lib/player'
-require './lib/station'
 
 class TestPlayer < MiniTest::Unit::TestCase
 

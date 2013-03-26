@@ -1,15 +1,13 @@
 class Player
 
+	attr_reader :balance, :lands, :name
+
 	def initialize(player_name, balance)
 
 		@name = name
 		@balance = balance
 		@lands = []
 
-	end
-
-	def check_balance
-		@balance
 	end
 
 	def buy_land(land)
@@ -27,14 +25,6 @@ class Player
 
 	def receive_rent(rent_price)
 		@balance = @balance + rent_price
-	end
-
-	def view_lands
-		@lands
-	end
-
-	def to_s
-		"#{@lands}"
 	end
 
 end
