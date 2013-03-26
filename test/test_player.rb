@@ -14,27 +14,27 @@ class TestPlayer < MiniTest::Unit::TestCase
 
 		assert_equal 1, player1.view_lands.count #now checking that @land array is NOT empty and got 1 item in it
 
-	end
+# 	end
 
-	def test_pays_rent
-		player = Player.new('Ruben', 10)
-	    player.pay_rent(7)
-		assert_equal(3, player.check_balance)
-	end
+# 	def test_pays_rent
+# 		player = Player.new('Ruben', 10)
+# 	    player.pay_rent(7)
+# 		assert_equal(3, player.check_balance)
+# 	end
 
-	def test_receives_rent
-			player = Player.new('Ruben', 10)
-		    player.receive_rent(7)
-			assert_equal(17, player.check_balance)
-		end
+# 	def test_receives_rent
+# 			player = Player.new('Ruben', 10)
+# 		    player.receive_rent(7)
+# 			assert_equal(17, player.check_balance)
+# 		end
 
-	def test_buys_land_decrease_balance
-		player1 = Player.new('Ruben', 10000)
-	  land1 = Land.new("Brussels", 1000, 50)
+# 	def test_buys_land_decrease_balance
+# 		player1 = Player.new('Ruben', 10000)
+# 	  land1 = Land.new("Brussels", 1000, 50)
 
-	  player1.buy_land(land1)
-	  assert_equal 9000, player1.check_balance
+# 	  player1.buy_land(land1)
+# 	  assert_equal 9000, player1.check_balance
 
-	end
+# 	end
 
-end
+# end

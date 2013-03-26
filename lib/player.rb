@@ -2,7 +2,7 @@ class Player
 
 	attr_reader :balance, :lands, :name
 
-	def initialize(player_name, balance)
+	def initialize(ame, balance)
 
 		@name = name
 		@balance = balance
@@ -12,7 +12,7 @@ class Player
 
 	def buy_land(land)
 		@lands << land
-		decrease_balance(land.view_value_for_purchase)
+		# decrease_balance(land.view_value_for_purchase)
 	end
 
 	def decrease_balance(value_for_purchase)
