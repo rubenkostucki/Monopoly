@@ -10,6 +10,7 @@ class Player
 	def buy(land)
 		@lands << land
     @balance = @balance - land.value
+    land.bought(self)
   end
 
   def pay_rent(land)

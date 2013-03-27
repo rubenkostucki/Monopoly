@@ -38,4 +38,10 @@ class TestPlayer < MiniTest::Unit::TestCase
     @player1.receive_rent(@land1)
     assert_equal 1090, @player1.balance
   end
+
+  def test_becomes_owner_when_land_bought
+    @player1.buy(@land1)
+    assert_equal @land1, @player1.lands.last
+    assert_equal @player1, @land1.owner
+  end
 end
