@@ -1,8 +1,10 @@
-class Land
+class Land < Tile
 
   attr_reader :value
+  attr_accessor :owner
 
-  def initialize(value)
+  def initialize(name, value)
+  super(name)
   @available = true
   @value = value
   end
@@ -11,8 +13,13 @@ class Land
     @available
   end
 
-  def bought
+  def bought(owner)
     @available = false
+    @owner = owner
+  end
+
+  def rent
+    @rent = @value / 10
   end
 
 end
