@@ -1,24 +1,25 @@
 class Player
 
-  attr_accessor :lands, :balance
+  attr_accessor :lands, :balance, :position
+
+  STARTING_BALANCE = 1000
 
   def initialize
     @lands = []
-    @balance = 1000
+    @balance, @position = STARTING_BALANCE, 0
   end
 
 	def buy(land)
 		@lands << land
-    @balance = @balance - land.value
-    land.bought(self)
+    @balance -= land.value
+    land.bought_by(self)
   end
 
   def pay_rent(land)
-    @balance = @balance - land.rent
+    @balance -= land.rent
   end
 
   def receive_rent(land)
-    @balance = @balance + land.rent
+    @balance += land.rent
   end
-
 end

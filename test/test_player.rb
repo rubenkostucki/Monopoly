@@ -7,16 +7,20 @@ require './lib/player'
 class TestPlayer < MiniTest::Unit::TestCase
 
 	def setup
-		@player1 = Player.new
-    @land1 = Land.new("Brussels", 900)
+		create_player
+    @land1 = Land.new("Brussels", 1, 900)
 	end
 
 	def test_no_lands_when_initialized
 		assert_equal 0, @player1.lands.count
 	end
 
+  def test_position_is_zero_when_initialized
+    assert_equal 0, @player1.position
+  end
+
   def test_balance_when_initialized
-    assert_equal 1000, @player1.balance
+    assert_equal start_balance, @player1.balance
   end
 
     def test_has_lands_when_bought
@@ -43,5 +47,18 @@ class TestPlayer < MiniTest::Unit::TestCase
     @player1.buy(@land1)
     assert_equal @land1, @player1.lands.last
     assert_equal @player1, @land1.owner
+  end
+
+  # def test_cant_afford_to_buy
+  # end
+
+  private
+
+  def create_player
+    @player1 = Player.new
+  end
+
+  def start_balance
+    Player::STARTNG_BALANCE
   end
 end

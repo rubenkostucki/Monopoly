@@ -8,7 +8,7 @@ require './lib/player'
 class TestLand < MiniTest::Unit::TestCase
 
   def setup
-    @land1 = Land.new("Brussels", 1000)
+    @land1 = Land.new("Brussels", 1, 1000)
   end
 
   def test_available_when_initialized
@@ -16,7 +16,7 @@ class TestLand < MiniTest::Unit::TestCase
   end
 
   def test_not_available_when_bought
-    @land1.bought("Ruben")
+    @land1.bought_by("Ruben")
     assert_equal false, @land1.available?
   end
 
@@ -29,7 +29,7 @@ class TestLand < MiniTest::Unit::TestCase
   end
 
   def test_owner_when_bought
-    @land1.bought("Ruben")
+    @land1.bought_by("Ruben")
     assert_equal "Ruben", @land1.owner
   end
 
