@@ -4,11 +4,13 @@ require './lib/land'
 require './lib/player'
 
 
+
 class TestPlayer < MiniTest::Unit::TestCase
 
 	def setup
 		create_player
     @land1 = Land.new("Brussels", 1, 900)
+    @land2 = Land.new("LONDON", 2, 90000)
 	end
 
 	def test_no_lands_when_initialized
@@ -23,7 +25,7 @@ class TestPlayer < MiniTest::Unit::TestCase
     assert_equal start_balance, @player1.balance
   end
 
-    def test_has_lands_when_bought
+  def test_has_lands_when_bought
     @player1.buy(@land1)
     assert_equal 1, @player1.lands.count
   end
@@ -31,6 +33,17 @@ class TestPlayer < MiniTest::Unit::TestCase
   def test_balance_decreases_when_land_bought
     @player1.buy(@land1)
     assert_equal 100, @player1.balance
+  end
+
+  def test_becomes_owner_when_land_bought
+    @player1.buy(@land1)
+    assert_equal @land1, @player1.lands.last
+    assert_equal @player1, @land1.owner
+  end
+
+  def test_cant_afford_to_buy_land2
+    @player1.buy(@land2)
+    assert_equal 0, @player1.balance
   end
 
   def test_balance_decreases_when_rent_payed
@@ -43,14 +56,10 @@ class TestPlayer < MiniTest::Unit::TestCase
     assert_equal 1090, @player1.balance
   end
 
-  def test_becomes_owner_when_land_bought
-    @player1.buy(@land1)
-    assert_equal @land1, @player1.lands.last
-    assert_equal @player1, @land1.owner
+  def test_cant_pay_rent
+    @player1.pay_rent(@land2)
+    assert_equal 0, @player1.balance
   end
-
-  # def test_cant_afford_to_buy
-  # end
 
   private
 
@@ -59,6 +68,6 @@ class TestPlayer < MiniTest::Unit::TestCase
   end
 
   def start_balance
-    Player::STARTNG_BALANCE
+    Player::STARTING_BALANCE
   end
 end
