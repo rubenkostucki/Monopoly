@@ -17,8 +17,8 @@ class TestPlayer < MiniTest::Unit::TestCase
 		assert_equal 0, @player1.lands.count
 	end
 
-  def test_position_is_zero_when_initialized
-    assert_equal 0, @player1.position
+  def test_position_is_one_when_initialized
+    assert_equal 1, @player1.position
   end
 
   def test_balance_when_initialized
@@ -42,8 +42,7 @@ class TestPlayer < MiniTest::Unit::TestCase
   end
 
   def test_cant_afford_to_buy_land2
-    @player1.buy(@land2)
-    assert_equal 0, @player1.balance
+    assert_equal false, @player1.buy(@land2)
   end
 
   def test_balance_decreases_when_rent_payed
@@ -60,6 +59,11 @@ class TestPlayer < MiniTest::Unit::TestCase
     @player1.pay_rent(@land2)
     assert_equal 0, @player1.balance
   end
+
+  def test_buy_raises_exception_cant_afford
+    assert_raises(RuntimeError) { @player1.buy!(@land2) }
+  end
+
 
   private
 

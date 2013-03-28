@@ -14,8 +14,4 @@ class TestEngine < MiniTest::Unit::TestCase
     @engine = Engine.new(test_player1, test_player2, board)
   end
 
-  def test_game_ready?
-    assert_equal true, @engine.ready?
-  end
-
 end

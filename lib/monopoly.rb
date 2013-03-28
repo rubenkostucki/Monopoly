@@ -3,15 +3,10 @@ require './land'
 require './player'
 require './engine'
 
-board = Board.new
-ruben = Player.new
-leo = Player.new
-
-engine = Engine.new
-
-engine.ready?
-
-engine.run
-
-
-
+begin
+  engine = Engine.new
+  engine.run
+rescue Exception => e
+  puts "something's gone wrong"
+  raise e
+end

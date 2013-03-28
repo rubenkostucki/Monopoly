@@ -1,10 +1,14 @@
+
 class Engine
 
   def initialize(player1, player2, board)
+  board = Board.new
+  ruben = Player.new
+  leo = Player.new
+
   end
 
-  def ready?
-
+  def run
   end
 
 end

@@ -6,17 +6,18 @@ class Player
 
   def initialize
     @lands = []
-    @balance, @position = STARTING_BALANCE, 0
+    @balance, @position = STARTING_BALANCE, 1
   end
 
-	def buy(land)
-    if @balance > land.value
-		  @lands << land
-      @balance -= land.value
-      land.bought_by(self)
-    else
-      @balance = 0
-    end
+  def buy(land)
+    return false if @balance < land.value
+    @lands << land
+    @balance -= land.value
+    land.bought_by(self)
+  end
+
+  def buy!(land)
+    raise "not enough cash" unless buy(land)
   end
 
   def pay_rent(land)

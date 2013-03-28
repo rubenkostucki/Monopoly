@@ -37,6 +37,5 @@ class Board
     @tiles << Land.new("Paris", 15, 1500)
     @tiles << Land.new("London", 16, 1600)
   end
-
 end
 

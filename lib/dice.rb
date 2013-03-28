@@ -7,6 +7,3 @@ class Dice
   end
 
 end
-
-dice = Dice.new
-puts  dice.roll
