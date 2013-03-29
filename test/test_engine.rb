@@ -30,4 +30,8 @@ class TestEngine < MiniTest::Unit::TestCase
     assert_equal @engine.dice.value + 1, @engine.player1.position
   end
 
+  def test_first_player_selected_player1
+
+  end
+
 end

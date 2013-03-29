@@ -21,4 +21,7 @@ class Land < Tile
     @rent = @value / 10
   end
 
+  def to_s
+    "#{name} with a purchase value of: #{value}"
+  end
 end
