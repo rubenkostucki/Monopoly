@@ -13,7 +13,10 @@ GEM
       guard (>= 0.4)
     listen (0.7.3)
     lumberjack (1.0.2)
+    metaclass (0.0.1)
     method_source (0.8.1)
+    mocha (0.13.3)
+      metaclass (~> 0.0.1)
     pry (0.9.12)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -33,6 +36,7 @@ DEPENDENCIES
   ansi
   guard
   guard-minitest
+  mocha
   pry
   rb-fsevent (~> 0.9.1)
   terminal-notifier-guard

@@ -1,6 +1,9 @@
 require './tile'
 require './land'
 require './player'
+require './move'
+require './board'
+require './dice'
 require './engine'
 
 begin
