@@ -31,7 +31,7 @@ class TestMove < MiniTest::Unit::TestCase
   end
 
   def test_players_moves_tile_3_from_16_whem_roll_3
-    @player.position = 16
+    @player.position =
     @move.move(@player, @board, 3)
     assert_equal 3, @player.position
   end
