@@ -12,28 +12,31 @@ class Engine
   end
 
   def run
-    roll_and_move
-    print_current_balance
-    action_on_current_position
+    2.times do
+      roll_and_move
+      print_current_balance
+      action_on_current_position
+    end
   end
 
   def roll_and_move
     dice.roll
-    puts "#{Player}has rolled #{dice.value}"
+    puts "Player1 has rolled #{dice.value}"
     move.move(player1, board, dice.value)
-    puts "#{Player} is now on position #{player1.position}, which is #{board.tile(player1.position).to_s}"
+    puts "Player1 is now on position #{@player1.position}, which is #{board.tile(player1.position).to_s}"
   end
 
   def print_current_balance
-    puts "#{Player}'s balance is #{player1.balance}"
+    puts "Player1's balance is #{player1.balance}"
   end
 
   def action_on_current_position
-    player1.buy(board.tile(player1.position))
-    puts "Player1 has bought #{board.tile(player1.position).to_s}"
-    print_current_balance
+    if board.tile(player1.position).available?
+      player1.buy(board.tile(player1.position))
+      puts "Player1 has bought #{board.tile(player1.position).to_s}"
+   else
+      puts "Player1 hasn't bought anything"
+    end
   end
-
-  def
 
   end

@@ -17,7 +17,7 @@ class Player
   end
 
   def buy!(land)
-    raise "not enough cash" unless buy(land)
+    puts "not enough cash" unless buy(land)
   end
 
   def pay_rent(land)
