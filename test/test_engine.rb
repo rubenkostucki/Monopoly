@@ -70,4 +70,10 @@ class TestEngine < MiniTest::Unit::TestCase
     assert_equal 1, @engine.player1.lands.count
     # assert_equal false, @engine.player1.buy(@board.tile(@player1.position))
   end
+
+  def test_take_turn_player1_player2
+
+
+
+  end
 end
