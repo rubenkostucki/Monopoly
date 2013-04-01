@@ -23,7 +23,7 @@ class Board
     @tiles << Land.new("Athens", 1, 100)
     @tiles << Land.new("Ankara", 2, 200)
     @tiles << Land.new("Warsaw", 3, 300)
-    @tiles << Land.new("Budapest", 4, 400)
+    @tiles << Land.new("  ", 4, 400)
     @tiles << Land.new("Rome", 5, 500)
     @tiles << Land.new("Madrid", 6, 600)
     @tiles << Land.new("Amsterdam", 7, 700)
