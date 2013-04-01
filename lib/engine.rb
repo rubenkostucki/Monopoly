@@ -1,14 +1,15 @@
 
 class Engine
 
-  attr_reader :dice, :players, :move, :board
+  attr_reader :dice, :player1, :player2, :move, :board
 
   def initialize
-    @player = [Player.new, Player.new]
+    @player1 = Player.new
+    @player2 = Player.new
     @board = Board.new
     @dice = Dice.new
     @move = Move.new
-    @current_player_indice = 1
+    # @take_turn = TakeTurn.new
   end
 
   def run
@@ -19,17 +20,11 @@ class Engine
     end
   end
 
-  def current_player
-    return @players[@current_player_indice]
-  end
-
-  def next_player
-    @current_player_indice = (@current_player_indice+1) % @players.size
-  end
-
   def roll_and_move
     dice.roll
+    puts "Player1 has rolled #{dice.value}"
     move.move(player1, board, dice.value)
+    puts "Player1 is now on position #{@player1.position}, which is #{board.tile(player1.position).to_s}"
   end
 
   def print_current_balance
@@ -37,24 +32,14 @@ class Engine
   end
 
   def player_action
-    player1.buy(board.tile(player1.position))
+    if board.tile(player1.position).available? && player1.buy(board.tile(player1.position)) == false
+      puts "Player1 can't afford to buy this land"
+    elsif
+      player1.buy(board.tile(player1.position))
+      puts "Player1 has bought #{board.tile(player1.position).to_s} and now owns #{player1.lands}"
+    else board.tile(player1.position).bought_by(player2)
+      player1.pay_rent(board.tile(player1.position))
+      player2.receive_rent(board.tile(player1.position))
+    end
   end
 end
-
-
-    # puts "Player1 has rolled #{dice.value}"
-
-    # puts "Player1 is now on position #{@player1.position}, which is #{board.tile(player1.position).to_s}"
-
-
-    # puts "Player1's balance is #{player1.balance}"
-
-
- # if board.tile(player1.position).available? && player1.buy(board.tile(player1.position)) == false
-    #   puts "Player1 hasn't bought anything"
-    # else
-    #   player1.buy(board.tile(player1.position))
-    #   puts "Player1 has bought #{board.tile(player1.position).to_s} and now owns #{player1.lands}"
-    # end
-    # elsif board.tile(player1.position).available? == false &&
-  # end
