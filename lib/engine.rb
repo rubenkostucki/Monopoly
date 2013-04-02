@@ -10,16 +10,16 @@ class Engine
     @board = Board.new
     @dice = Dice.new
     @move = Move.new
-    # @take_turn = TakeTurn.new
+    @take_turn = Turn.new
   end
 
   def run
     3.times do
-        # take_turn.current_player
+        take_turn.current_player
         roll_and_move
         print_current_balance
         player_action
-        # take_turn.next_player
+        take_turn.next_player
     end
   end
 
