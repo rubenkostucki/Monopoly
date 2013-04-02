@@ -10,14 +10,17 @@ class Player
   end
 
   def buy(land)
-    return false if @balance < land.value
     @lands << land
     @balance -= land.value
     land.bought_by(self)
   end
 
   def buy!(land)
-    puts "not enough cash" unless buy(land)
+    if @balance < land.value
+      false
+    else
+      true
+    end
   end
 
   def pay_rent(land)

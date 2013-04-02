@@ -42,7 +42,7 @@ class TestPlayer < MiniTest::Unit::TestCase
   end
 
   def test_cant_afford_to_buy_land2
-    assert_equal false, @player1.buy(@land2)
+    assert_equal false, @player1.buy!(@land2)
   end
 
   def test_balance_decreases_when_rent_payed
@@ -58,10 +58,6 @@ class TestPlayer < MiniTest::Unit::TestCase
   def test_cant_pay_rent
     @player1.pay_rent(@land2)
     assert_equal 0, @player1.balance
-  end
-
-  def test_buy_raises_exception_cant_afford
-    assert_raises(RuntimeError) { @player1.buy!(@land2) }
   end
 
 

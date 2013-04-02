@@ -1,19 +1,25 @@
 class TakeTurn
 
-  attr_reader :players
+  attr_reader :player
 
   def initialize
-    @players = ["player1", "player2"]
+    @player = [@player1, @player2]
+    @player1 = Player.new
+    @player2 = Player.new
     @current_player_indice = 0
   end
 
   def current_player
-    players[@current_player_indice]
+    player[@current_player_indice]
   end
 
   def next_player
-    @current_player_indice = (@current_player_indice + 1) % @players.size
+    @current_player_indice = (@current_player_indice + 1) % @player.size
     current_player
   end
+
+  # def to_s
+  #   "#{}"
+  # end
 
 end

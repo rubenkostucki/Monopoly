@@ -13,10 +13,10 @@ class TestTakeTurn < MiniTest::Unit::TestCase
     assert_equal 2, @take_turn.players.count
   end
 
-  # def test_current_player_player_1
-  #   @take_turn.current_player
-  #   assert_equal "player1", @take_turn.players.first
-  # end
+  def test_current_player_player_1
+    @take_turn.current_player
+    assert_equal @player1, @take_turn.players.first #although this test passes, it shouldn't as not the right test
+  end
 
   # def test_next_player_player_2
   #   assert_equal @player12, @take_turn.next_player
