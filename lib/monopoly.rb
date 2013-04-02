@@ -4,7 +4,7 @@ require './player'
 require './move'
 require './board'
 require './dice'
-require './take_turn'
+require './turn'
 require './engine'
 
 # begin

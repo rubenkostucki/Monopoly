@@ -24,11 +24,7 @@ class Player
   end
 
   def pay_rent(land)
-    if @balance > land.rent
       @balance -= land.rent
-    else
-      @balance = 0
-    end
   end
 
   def receive_rent(land)

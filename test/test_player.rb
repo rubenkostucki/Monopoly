@@ -59,10 +59,10 @@ class TestPlayer < MiniTest::Unit::TestCase
     assert_equal 1090, @player1.balance
   end
 
-  def test_cant_pay_rent
-    @player1.pay_rent(@land2)
-    assert_equal 0, @player1.balance
-  end
+  # def test_cant_pay_rent
+  #   @player1.pay_rent(@land2)
+  #   assert_equal 0, @player1.balance
+  # end
 
 
   private
