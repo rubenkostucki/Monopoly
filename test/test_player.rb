@@ -13,6 +13,10 @@ class TestPlayer < MiniTest::Unit::TestCase
     @land2 = Land.new("LONDON", 2, 90000)
 	end
 
+  def test_name_when_initialized
+    assert_equal "sam", @player1.name
+  end
+
 	def test_no_lands_when_initialized
 		assert_equal 0, @player1.lands.count
 	end
@@ -64,7 +68,7 @@ class TestPlayer < MiniTest::Unit::TestCase
   private
 
   def create_player
-    @player1 = Player.new
+    @player1 = Player.new("sam")
   end
 
   def start_balance

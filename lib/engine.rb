@@ -25,30 +25,30 @@ class Engine
 
   def roll_and_move
     dice.roll
-    puts "Player1 has rolled #{dice.value}"
-    move.move(player1, board, dice.value)
-    puts "Player1 is now on position #{player1.position}, which is #{board.tile(player1.position)}"
+    puts "#{take_turn.current_player} has rolled #{dice.value}"
+    move.move(take_turn.current_player, board, dice.value)
+    puts "#{take_turn.current_player} is now on position #{take_turn.current_player.position}, which is #{board.tile(take_turn.current_player.position)}"
   end
 
   def print_current_balance
-    puts "Your balance is now: #{player1.balance}"
+    puts "Your balance is now: #{take_turn.current_player.balance}"
   end
 
   def player_action
-    if board.tile(player1.position).available? && player1.buy!(board.tile(player1.position))
+    if board.tile(take_turn.current_player.position).available? && take_turn.current_player.buy!(board.tile(take_turn.current_player.position))
 
-      player1.buy(board.tile(player1.position))
-      puts "Player1 has bought #{board.tile(player1.position)} and now owns #{player1.lands}"
+      take_turn.current_player.buy(board.tile(take_turn.current_player.position))
+      puts "#{take_turn.current_player} has bought #{board.tile(take_turn.current_player.position)} and now owns #{take_turn.current_player.lands}"
 
-    elsif player1.buy!(board.tile(player1.position)) == false
+    elsif take_turn.current_player.buy!(board.tile(take_turn.current_player.position)) == false
 
-      puts "Player1 can't afford to buy this land"
+      puts "#{take_turn.current_player} can't afford to buy this land"
 
-    elsif board.tile(player1.position).bought_by(player2)
-      puts "You are paying rent!!! #{board.tile(player1.position)}"
+    elsif board.tile(take_turn.current_player.position).bought_by(take_turn.next_player)
+      puts "You are paying rent!!! #{board.tile(take_turn.current_player.position)}"
 
-      player1.pay_rent(board.tile(player1.position))
-      player2.receive_rent(board.tile(player1.position))
+      take_turn.current_player.pay_rent(board.tile(take_turn.current_player.position))
+      take_turn.next_player.receive_rent(board.tile(take_turn.current_player.position))
     end
   end
 end
