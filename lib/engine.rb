@@ -7,21 +7,26 @@ class Engine
     @player1 = Player.new("Ruben")
     @player2 = Player.new("Sam")
     @player3 = Player.new("Rob")
-    @players = [@player1, @player2, @player3]
+    @player4 = Player.new("Ben")
+    @player5 = Player.new("Leo")
+    @players = [@player1, @player2, @player3, @player4, @player5]
     @board = Board.new
     @dice = Dice.new
     @move = Move.new
     @take_turn = Turn.new(@players)
+    @end = 0
   end
 
   def run
-    30.times do
+    until @end == 1 do
+      sleep 0.05
       take_turn.current_player
+      game_over
       roll_and_move
       print_current_balance
       player_action
       print_current_balance
-      game_over
+      elimination
       take_turn.next_player
       puts "------------------------"
     end
@@ -62,8 +67,19 @@ class Engine
     end
   end
 
-  def game_over
-    return "game over" if current_player.balance < 0
+  def elimination
+    if take_turn.current_player.balance < 0
+      puts "#{take_turn.current_player.name} has lost due to insufficient funds to continue playing"
+      sleep 2
+      @players.delete(take_turn.current_player)
+    end
   end
 
+  def game_over
+    if @players.size == 1
+      puts "#{take_turn.current_player.name} is the WINNER!!!"
+      @end = 1
+
+    end
+  end
 end
