@@ -1,16 +1,16 @@
 
 class Engine
 
-  attr_reader :dice, :take_turn, :move, :board
-  attr_reader :player1, :player2
+  attr_reader :dice, :take_turn, :move, :board, :player1, :player2
 
   def initialize
     @player1 = Player.new
     @player2 = Player.new
+    @players = [@player1, @player2]
     @board = Board.new
     @dice = Dice.new
     @move = Move.new
-    @take_turn = Turn.new
+    @take_turn = Turn.new(@players)
   end
 
   def run
